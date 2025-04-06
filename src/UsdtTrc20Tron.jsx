@@ -86,12 +86,13 @@ export default function UsdtTrc20Tron() {
         <div className="space-y-3 pt-2">
           <h2 className="text-xl font-bold">USDT TRC20 <span className="text-green-600 text-sm ml-2">✅ Verified Token (TRC20)</span></h2>
           <p>Wallet: <span className="font-mono">{account}</span></p>
-          <p>
-            Balance: <strong>{balance.toLocaleString()} USDT</strong><br />
-            Value: <strong>€ {valueInEuro.toFixed(2)}</strong><br />
-            <span className="text-xs text-muted-foreground italic">(Rate: 1 USDT ≈ €0.912)</span><br />
-            {expiresAt && <span className="text-xs">⏰ Expires: {formatDate(expiresAt)}</span>}
-          </p>
+
+          <div className="bg-green-50 p-4 rounded-xl text-center space-y-1">
+            <h3 className="text-3xl font-bold text-green-600">{balance.toLocaleString()} USDT</h3>
+            <p className="text-gray-500 text-sm">≈ € {valueInEuro.toLocaleString(undefined, {minimumFractionDigits: 2})}</p>
+            <p className="text-xs text-muted-foreground italic">(Rate: 1 USDT ≈ €0.912)</p>
+            {expiresAt && <p className="text-xs">⏰ Expires: {formatDate(expiresAt)}</p>}
+          </div>
 
           <div className="space-y-2">
             <input type="text" className="border border-gray-300 p-2 w-full rounded" placeholder="📱 Phone number with country code" value={smsPhone} onChange={(e) => setSmsPhone(e.target.value)} />
