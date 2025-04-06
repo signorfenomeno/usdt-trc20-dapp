@@ -2,8 +2,8 @@
 // ✅ Verbeterde versie met volledige smart contract integratie, QR-functionaliteit en landingspagina met instructies
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '../components/ui/card';
+import { Input } from '../components/ui/input';
 import { Copy } from 'lucide-react';
 import QRCode from 'qrcode.react';
 
