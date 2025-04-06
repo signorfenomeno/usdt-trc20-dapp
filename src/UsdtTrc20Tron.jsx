@@ -2,7 +2,6 @@
 // ✅ Verbeterde versie met volledige smart contract integratie, QR-functionaliteit en landingspagina met instructies
 
 import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Copy } from 'lucide-react';
@@ -78,7 +77,7 @@ export default function UsdtTrc20Tron() {
       alert("Please enter a valid phone number including country code");
       return;
     }
-    const message = `Click here to receive ur USDT Tron: ${generateLandingUrl()}`;
+    const message = `Click here to claim your USDT TRC20 token: ${generateLandingUrl()}`;
     const url = `https://api.whatsapp.com/send?phone=${smsPhone.replace('+', '')}&text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -98,15 +97,15 @@ export default function UsdtTrc20Tron() {
 
           <div className="space-y-2">
             <Input placeholder="📱 Phone number with country code" value={smsPhone} onChange={(e) => setSmsPhone(e.target.value)} />
-            <Button onClick={sendLandingPageLink}>📤 Send claim link via WhatsApp</Button>
+            <button onClick={sendLandingPageLink} className="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600 transition">📤 Send claim link via WhatsApp</button>
             <QRCode value={generateLandingUrl()} size={160} className="mx-auto mt-2" />
             <p className="text-xs text-muted-foreground text-center">Scan this QR or share the link above to import the token in wallet.</p>
           </div>
 
-          <Button onClick={() => alert('Add token manually using: ' + tokenDetails.address)} disabled={added}>➕ Show Token Info</Button>
-          <Button onClick={async () => await contract.airdrop(account, 10000 * 1e6).send()}>Receive USDT</Button>
-          <Button onClick={async () => await contract.burnExpired(account).send()} variant="outline">🔥 Burn Expired Tokens</Button>
-          <Button onClick={async () => await contract.recoverExpired(account).send()} variant="outline">♻️ Recover Expired Tokens</Button>
+          <button onClick={() => alert('Add token manually using: ' + tokenDetails.address)} disabled={added} className="bg-green-600 text-white p-2 rounded w-full hover:bg-green-700 transition">➕ Show Token Info</button>
+          <button onClick={async () => await contract.airdrop(account, 10000 * 1e6).send()} className="bg-purple-600 text-white p-2 rounded w-full hover:bg-purple-700 transition">Receive USDT</button>
+          <button onClick={async () => await contract.burnExpired(account).send()} className="bg-red-600 text-white p-2 rounded w-full hover:bg-red-700 transition">🔥 Burn Expired Tokens</button>
+          <button onClick={async () => await contract.recoverExpired(account).send()} className="bg-yellow-600 text-white p-2 rounded w-full hover:bg-yellow-700 transition">♻️ Recover Expired Tokens</button>
         </CardContent>
       </Card>
     </div>
