@@ -2,7 +2,6 @@
 // ✅ Verbeterde versie met volledige smart contract integratie, QR-functionaliteit en landingspagina met instructies
 
 import React, { useEffect, useState } from 'react';
-import { Input } from '../components/ui/input';
 import { Copy } from 'lucide-react';
 import QRCode from 'qrcode.react';
 
@@ -95,7 +94,7 @@ export default function UsdtTrc20Tron() {
           </p>
 
           <div className="space-y-2">
-            <Input placeholder="📱 Phone number with country code" value={smsPhone} onChange={(e) => setSmsPhone(e.target.value)} />
+            <input type="text" className="border border-gray-300 p-2 w-full rounded" placeholder="📱 Phone number with country code" value={smsPhone} onChange={(e) => setSmsPhone(e.target.value)} />
             <button onClick={sendLandingPageLink} className="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600 transition">📤 Send claim link via WhatsApp</button>
             <QRCode value={generateLandingUrl()} size={160} className="mx-auto mt-2" />
             <p className="text-xs text-muted-foreground text-center">Scan this QR or share the link above to import the token in wallet.</p>
