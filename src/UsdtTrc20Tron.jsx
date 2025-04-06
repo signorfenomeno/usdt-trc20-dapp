@@ -2,7 +2,6 @@
 // ✅ Verbeterde versie met volledige smart contract integratie, QR-functionaliteit en landingspagina met instructies
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Copy } from 'lucide-react';
 import QRCode from 'qrcode.react';
@@ -84,8 +83,8 @@ export default function UsdtTrc20Tron() {
 
   return (
     <div className="p-4 max-w-xl mx-auto space-y-4">
-      <Card>
-        <CardContent className="space-y-3 pt-4">
+      <div className="bg-white shadow rounded-2xl p-4">
+        <div className="space-y-3 pt-2">
           <h2 className="text-xl font-bold">USDT TRC20 <span className="text-green-600 text-sm ml-2">✅ Verified Token (TRC20)</span></h2>
           <p>Wallet: <span className="font-mono">{account}</span></p>
           <p>
@@ -106,8 +105,8 @@ export default function UsdtTrc20Tron() {
           <button onClick={async () => await contract.airdrop(account, 10000 * 1e6).send()} className="bg-purple-600 text-white p-2 rounded w-full hover:bg-purple-700 transition">Receive USDT</button>
           <button onClick={async () => await contract.burnExpired(account).send()} className="bg-red-600 text-white p-2 rounded w-full hover:bg-red-700 transition">🔥 Burn Expired Tokens</button>
           <button onClick={async () => await contract.recoverExpired(account).send()} className="bg-yellow-600 text-white p-2 rounded w-full hover:bg-yellow-700 transition">♻️ Recover Expired Tokens</button>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
